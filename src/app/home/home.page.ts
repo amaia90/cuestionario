@@ -1,3 +1,5 @@
+import { CuestionarioService } from './../servicios/cuestionario.service';
+import { IPregunta } from './../interfaces/interfaces';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +9,14 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(public cuestionario: CuestionarioService) {
+  }
 
+  public onClick(item: IPregunta) {
+    this.cuestionario.responder(item);
+  }
+
+  public guardar() {
+    this.cuestionario.guardar();
+  }
 }
